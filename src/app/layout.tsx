@@ -91,11 +91,14 @@ const globalOrg = {
   "@id": `${SITE.url}/#organization`,
   name: SITE.name,
   url: SITE.url,
-  logo: ABSOLUTE(SITE.logo),
-  sameAs: [
-    "https://play.google.com/store",
-    "https://apps.apple.com",
-  ],
+  logo: {
+    "@type": "ImageObject",
+    "@id": `${SITE.url}/#logo`,
+    url: ABSOLUTE(SITE.logo),
+    contentUrl: ABSOLUTE(SITE.logo),
+    caption: SITE.name,
+    inLanguage: SITE.language,
+  },
 };
 const globalSite = {
   "@context": "https://schema.org",

@@ -6,7 +6,7 @@ type PageSEO = {
   description: string;
   path: string;
   ogImage?: string;
-  type?: "website" | "article";
+  type?: "website" | "article" | "profile";
   publishedTime?: string;
   modifiedTime?: string;
   keywords?: string[];

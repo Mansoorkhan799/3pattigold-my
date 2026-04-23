@@ -133,7 +133,13 @@ export default function HomePage() {
 
         <div className="mb-4 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-neutral-600">
           <span>
-            Written by <strong className="text-neutral-800">{HOME_META.author}</strong>
+            Written by{" "}
+            <Link
+              href="/author/admin"
+              className="font-semibold text-neutral-800 hover:underline"
+            >
+              {HOME_META.author}
+            </Link>
           </span>
           <span aria-hidden="true">·</span>
           <span>{HOME_META.readingTimeMinutes} min read</span>
@@ -146,6 +152,87 @@ export default function HomePage() {
             })}
           </time>
         </div>
+
+        <aside
+          aria-label="Quick summary"
+          className="mb-6 rounded-xl border border-amber-200 bg-amber-50/60 p-5"
+        >
+          <h2 id="tldr" className="m-0 text-sm font-bold uppercase tracking-wide text-amber-900">
+            Quick Answer
+          </h2>
+          <p className="mt-2 text-[15px] text-neutral-800">
+            <strong>3Patti Gold</strong> is a free real-money card-game APK for Android 5.0+ in
+            Pakistan. Version <strong>v{SITE.appVersion}</strong>, size <strong>{SITE.appSizeMb} MB</strong>,
+            300K+ downloads. Install via the{" "}
+            <Link href="/download-3patti-gold">official APK download</Link> (not Google Play),{" "}
+            <Link href="/register-on-the-3-patti-gold">register</Link> with your mobile number,
+            fund the wallet via{" "}
+            <Link href="/deposit-money-in-3-patti-gold">Easypaisa or JazzCash</Link>, and{" "}
+            <Link href="/withdraw-money-on-3-patti-gold">withdraw winnings</Link> to the same
+            methods. Also runs on <Link href="/3patti-gold-for-pc">PC via emulator</Link> and{" "}
+            <Link href="/3patti-gold-for-ios">iOS</Link>. 18+ only — play responsibly.
+          </p>
+        </aside>
+
+        <section aria-labelledby="at-a-glance" className="mb-6">
+          <h2 id="at-a-glance" className="!mt-0 text-xl">At a Glance</h2>
+          <table>
+            <tbody>
+              <tr>
+                <th scope="row">App name</th>
+                <td>3Patti Gold</td>
+              </tr>
+              <tr>
+                <th scope="row">Platform</th>
+                <td>Android 5.0+ · PC (emulator) · iOS</td>
+              </tr>
+              <tr>
+                <th scope="row">Latest version</th>
+                <td>v{SITE.appVersion}</td>
+              </tr>
+              <tr>
+                <th scope="row">APK size</th>
+                <td>{SITE.appSizeMb} MB</td>
+              </tr>
+              <tr>
+                <th scope="row">Price</th>
+                <td>Free to download (real-money in-game wagers)</td>
+              </tr>
+              <tr>
+                <th scope="row">Downloads</th>
+                <td>300,000+</td>
+              </tr>
+              <tr>
+                <th scope="row">Supported payments</th>
+                <td>Easypaisa, JazzCash, bank transfer</td>
+              </tr>
+              <tr>
+                <th scope="row">Games included</th>
+                <td>Teen Patti, Rummy, Andar Bahar, Dragon vs Tiger, Roulette, Poker, slots</td>
+              </tr>
+              <tr>
+                <th scope="row">Age restriction</th>
+                <td>18+ only</td>
+              </tr>
+              <tr>
+                <th scope="row">Available on Google Play</th>
+                <td>No — direct APK from the official site</td>
+              </tr>
+              <tr>
+                <th scope="row">Last reviewed</th>
+                <td>
+                  <time dateTime={HOME_META.dateModified}>
+                    {new Date(HOME_META.dateModified).toLocaleDateString("en-US", {
+                      year: "numeric",
+                      month: "long",
+                      day: "numeric",
+                    })}
+                  </time>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
 
         <TableOfContents items={TOC} />
 

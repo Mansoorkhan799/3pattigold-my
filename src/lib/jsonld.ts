@@ -1,8 +1,8 @@
 import { SITE, ABSOLUTE } from "./site";
 
-const org = () => ({
-  "@type": ["Organization", "Person"],
-  "@id": `${SITE.url}/#person`,
+const organization = () => ({
+  "@type": "Organization",
+  "@id": `${SITE.url}/#organization`,
   name: SITE.name,
   url: SITE.url,
   logo: {
@@ -13,14 +13,7 @@ const org = () => ({
     caption: SITE.name,
     inLanguage: SITE.language,
   },
-  image: {
-    "@type": "ImageObject",
-    "@id": `${SITE.url}/#logo`,
-    url: ABSOLUTE(SITE.logo),
-    contentUrl: ABSOLUTE(SITE.logo),
-    caption: SITE.name,
-    inLanguage: SITE.language,
-  },
+  image: { "@id": `${SITE.url}/#logo` },
 });
 
 const website = () => ({
@@ -28,7 +21,7 @@ const website = () => ({
   "@id": `${SITE.url}/#website`,
   url: SITE.url,
   name: SITE.name,
-  publisher: { "@id": `${SITE.url}/#person` },
+  publisher: { "@id": `${SITE.url}/#organization` },
   inLanguage: SITE.language,
   potentialAction: {
     "@type": "SearchAction",
@@ -37,6 +30,9 @@ const website = () => ({
   },
 });
 
+type GraphNode = Record<string, unknown>;
+type Graph = { "@context": string; "@graph": GraphNode[] };
+
 export function webPageGraph(params: {
   path: string;
   title: string;
@@ -44,13 +40,13 @@ export function webPageGraph(params: {
   image?: string;
   datePublished?: string;
   dateModified?: string;
-}) {
+}): Graph {
   const url = ABSOLUTE(params.path);
   const img = ABSOLUTE(params.image || SITE.defaultOgImage);
   return {
     "@context": "https://schema.org",
     "@graph": [
-      org(),
+      organization(),
       website(),
       {
         "@type": "ImageObject",
@@ -83,36 +79,59 @@ export function articleGraph(params: {
   image?: string;
   datePublished: string;
   dateModified?: string;
+  authorSlug?: string;
   authorName?: string;
+  authorBio?: string;
+  authorUrl?: string;
+  reviewerSlug?: string;
+  reviewerName?: string;
 }) {
   const url = ABSOLUTE(params.path);
   const img = ABSOLUTE(params.image || SITE.defaultOgImage);
+  const authorSlug = params.authorSlug || "admin";
+  const authorName = params.authorName || "Admin";
+  const authorUrl = params.authorUrl || `${SITE.url}/author/${authorSlug}`;
   const base = webPageGraph({
     ...params,
     dateModified: params.dateModified || params.datePublished,
   });
-  base["@graph"].push(
-    {
+
+  const authorPerson = {
+    "@type": "Person",
+    "@id": `${SITE.url}/author/${authorSlug}#person`,
+    name: authorName,
+    url: authorUrl,
+    ...(params.authorBio ? { description: params.authorBio } : {}),
+    worksFor: { "@id": `${SITE.url}/#organization` },
+  };
+
+  const article: Record<string, unknown> = {
+    "@type": "Article",
+    "@id": `${url}#article`,
+    isPartOf: { "@id": `${url}#webpage` },
+    mainEntityOfPage: { "@id": `${url}#webpage` },
+    headline: params.title,
+    description: params.description,
+    image: { "@id": img },
+    datePublished: params.datePublished,
+    dateModified: params.dateModified || params.datePublished,
+    author: { "@id": `${SITE.url}/author/${authorSlug}#person` },
+    publisher: { "@id": `${SITE.url}/#organization` },
+    inLanguage: SITE.language,
+  };
+
+  if (params.reviewerSlug && params.reviewerName) {
+    base["@graph"].push({
       "@type": "Person",
-      "@id": `${SITE.url}/author/${(params.authorName || "admin").toLowerCase()}`,
-      name: params.authorName || "admin",
-      url: `${SITE.url}/about-us`,
-    } as any,
-    {
-      "@type": "Article",
-      "@id": `${url}#article`,
-      isPartOf: { "@id": `${url}#webpage` },
-      mainEntityOfPage: { "@id": `${url}#webpage` },
-      headline: params.title,
-      description: params.description,
-      image: { "@id": img },
-      datePublished: params.datePublished,
-      dateModified: params.dateModified || params.datePublished,
-      author: { "@id": `${SITE.url}/author/${(params.authorName || "admin").toLowerCase()}` },
-      publisher: { "@id": `${SITE.url}/#person` },
-      inLanguage: SITE.language,
-    } as any,
-  );
+      "@id": `${SITE.url}/author/${params.reviewerSlug}#person`,
+      name: params.reviewerName,
+      url: `${SITE.url}/author/${params.reviewerSlug}`,
+      worksFor: { "@id": `${SITE.url}/#organization` },
+    });
+    article.reviewedBy = { "@id": `${SITE.url}/author/${params.reviewerSlug}#person` };
+  }
+
+  base["@graph"].push(authorPerson, article);
   return base;
 }
 
@@ -173,14 +192,40 @@ export function softwareApp() {
     operatingSystem: "ANDROID",
     applicationCategory: "GameApplication",
     offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: "4.7",
-      ratingCount: "3200",
-    },
     softwareVersion: SITE.appVersion,
     fileSize: `${SITE.appSizeMb} MB`,
-    author: { "@id": `${SITE.url}/#person` },
+    author: { "@id": `${SITE.url}/#organization` },
+    publisher: { "@id": `${SITE.url}/#organization` },
     downloadUrl: `${SITE.url}/download-3patti-gold`,
+    contentRating: "18+",
+  };
+}
+
+export function personPage(params: {
+  slug: string;
+  name: string;
+  jobTitle: string;
+  bio: string;
+  image?: string;
+  sameAs?: string[];
+  knowsAbout?: string[];
+}) {
+  const url = `${SITE.url}/author/${params.slug}`;
+  return {
+    "@context": "https://schema.org",
+    "@type": "ProfilePage",
+    "@id": `${url}#profilepage`,
+    mainEntity: {
+      "@type": "Person",
+      "@id": `${url}#person`,
+      name: params.name,
+      url,
+      jobTitle: params.jobTitle,
+      description: params.bio,
+      worksFor: { "@id": `${SITE.url}/#organization` },
+      ...(params.image ? { image: ABSOLUTE(params.image) } : {}),
+      ...(params.sameAs?.length ? { sameAs: params.sameAs } : {}),
+      ...(params.knowsAbout?.length ? { knowsAbout: params.knowsAbout } : {}),
+    },
   };
 }

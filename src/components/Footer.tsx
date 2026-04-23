@@ -75,12 +75,45 @@ export default function Footer() {
           </ul>
         </nav>
       </div>
+      <div className="border-t border-white/10 bg-neutral-900">
+        <div className="mx-auto max-w-6xl px-4 py-4 text-xs text-neutral-400">
+          <p className="text-center md:text-left">
+            <strong className="text-amber-400">18+ only.</strong> 3Patti Gold involves real-money
+            wagering. Play responsibly, set daily limits in-app, and never wager what you cannot
+            afford to lose. Need help?{" "}
+            <a
+              href="https://www.begambleaware.org/"
+              rel="noopener nofollow"
+              target="_blank"
+              className="underline hover:text-amber-300"
+            >
+              BeGambleAware
+            </a>{" "}
+            ·{" "}
+            <a
+              href="https://www.gamblingtherapy.org/"
+              rel="noopener nofollow"
+              target="_blank"
+              className="underline hover:text-amber-300"
+            >
+              Gambling Therapy
+            </a>{" "}
+            · See our <Link href="/disclaimer" className="underline hover:text-amber-300">Disclaimer</Link>.
+          </p>
+        </div>
+      </div>
       <div className="border-t border-white/10">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-2 px-4 py-4 text-xs text-neutral-500 md:flex-row">
           <p>
             © {new Date().getFullYear()} {SITE.name}. All rights reserved.
           </p>
-          <p>18+ only. Play responsibly. See our Disclaimer.</p>
+          <p>
+            Editorial site — not affiliated with any operator. See{" "}
+            <Link href="/about-us#editorial-standards" className="underline hover:text-amber-400">
+              editorial standards
+            </Link>
+            .
+          </p>
         </div>
       </div>
     </footer>

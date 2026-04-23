@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { SITE, ABSOLUTE } from "@/lib/site";
 import { POSTS } from "@/content/posts";
+import { AUTHORS } from "@/content/authors";
 
 const STATIC_PATHS: { path: string; priority: number; changeFrequency: MetadataRoute.Sitemap[number]["changeFrequency"] }[] = [
   { path: "/", priority: 1.0, changeFrequency: "weekly" },
@@ -33,7 +34,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     changeFrequency: "monthly",
     priority: 0.6,
   }));
+  const authorEntries: MetadataRoute.Sitemap = Object.values(AUTHORS).map((a) => ({
+    url: ABSOLUTE(`/author/${a.slug}`),
+    lastModified: now,
+    changeFrequency: "monthly",
+    priority: 0.3,
+  }));
   // void host reference to satisfy SITE import tree-shake in dev
   void SITE;
-  return [...staticEntries, ...postEntries];
+  return [...staticEntries, ...postEntries, ...authorEntries];
 }
