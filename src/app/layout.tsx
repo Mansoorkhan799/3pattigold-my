@@ -1,14 +1,12 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { GeistSans } from "geist/font/sans";
+import { GeistMono } from "geist/font/mono";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SpeculationRules from "@/components/SpeculationRules";
 import { JsonLd } from "@/components/JsonLd";
 import { SITE, ABSOLUTE } from "@/lib/site";
-
-const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
-const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
@@ -118,7 +116,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html
       lang="en-US"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${GeistSans.variable} ${GeistMono.variable} h-full antialiased`}
       prefix="og: https://ogp.me/ns#"
       data-scroll-behavior="smooth"
       itemScope
