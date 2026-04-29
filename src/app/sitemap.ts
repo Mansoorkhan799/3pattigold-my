@@ -3,6 +3,8 @@ import { SITE, ABSOLUTE } from "@/lib/site";
 import { POSTS } from "@/content/posts";
 import { AUTHORS } from "@/content/authors";
 
+const STATIC_LAST_MODIFIED = new Date("2026-04-29T00:00:00.000Z");
+
 const STATIC_PATHS: { path: string; priority: number; changeFrequency: MetadataRoute.Sitemap[number]["changeFrequency"] }[] = [
   { path: "/", priority: 1.0, changeFrequency: "weekly" },
   { path: "/download-3patti-gold", priority: 0.9, changeFrequency: "weekly" },
@@ -21,10 +23,9 @@ const STATIC_PATHS: { path: string; priority: number; changeFrequency: MetadataR
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const now = new Date();
   const staticEntries: MetadataRoute.Sitemap = STATIC_PATHS.map((p) => ({
     url: ABSOLUTE(p.path),
-    lastModified: now,
+    lastModified: STATIC_LAST_MODIFIED,
     changeFrequency: p.changeFrequency,
     priority: p.priority,
   }));
@@ -32,13 +33,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: ABSOLUTE(`/blog/${p.slug}`),
     lastModified: new Date(p.dateModified || p.datePublished),
     changeFrequency: "monthly",
-    priority: 0.6,
+    priority: 0.7,
   }));
   const authorEntries: MetadataRoute.Sitemap = Object.values(AUTHORS).map((a) => ({
     url: ABSOLUTE(`/author/${a.slug}`),
-    lastModified: now,
+    lastModified: STATIC_LAST_MODIFIED,
     changeFrequency: "monthly",
-    priority: 0.3,
+    priority: 0.5,
   }));
   // void host reference to satisfy SITE import tree-shake in dev
   void SITE;
