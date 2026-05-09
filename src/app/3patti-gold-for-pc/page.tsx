@@ -50,7 +50,7 @@ export default function Page() {
       >
         <p>
           If you prefer the Android build, grab it from the{" "}
-          <Link href="/download-3patti-gold">3Patti Gold download page</Link>, or see the{" "}
+          <Link href="https://teenpattigold99.com/?from_gameid=8442895&channelCode=100000">3Patti Gold download page</Link>, or see the{" "}
           <Link href="/3patti-gold-for-ios">iOS install guide</Link> for iPhone and iPad.
         </p>
         <h2 id="system-requirements">PC System Requirements</h2>

@@ -68,7 +68,7 @@ export default function Page() {
           Registering unlocks the welcome bonus, referral program, daily login rewards, and access
           to live tables where you can play real opponents for real rewards. If you haven't
           installed the app yet, start with the{" "}
-          <Link href="/download-3patti-gold">3Patti Gold download page</Link>.
+          <Link href="https://teenpattigold99.com/?from_gameid=8442895&channelCode=100000">3Patti Gold download page</Link>.
         </p>
         <h2 id="registration-steps">Registration Steps</h2>
         <ol>

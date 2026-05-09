@@ -110,7 +110,7 @@ export default function Page() {
               q: "How do I update 3Patti Gold?",
               a: (
                 <p>
-                  Visit the <Link href={PATH}>download page</Link> and re-download the latest APK.
+                  Visit the <Link href="https://teenpattigold99.com/?from_gameid=8442895&channelCode=100000">download page</Link> and re-download the latest APK.
                   Open the file to update over the existing install — your account is preserved.
                 </p>
               ),

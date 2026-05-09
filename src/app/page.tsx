@@ -99,7 +99,7 @@ export default function HomePage() {
             <p className="mt-4 text-lg text-neutral-700">{HOME_META.description}</p>
             <div className="mt-6 flex flex-wrap items-center gap-3">
               <Link
-                href="/download-3patti-gold"
+                href="https://teenpattigold99.com/?from_gameid=8442895&channelCode=100000"
                 className="inline-flex items-center rounded-full bg-amber-500 px-6 py-3 text-base font-semibold text-black shadow hover:bg-amber-400"
               >
                 Download 3Patti Gold
@@ -164,7 +164,7 @@ export default function HomePage() {
             <strong>3Patti Gold</strong> is a free real-money card-game APK for Android 5.0+ in
             Pakistan. Version <strong>v{SITE.appVersion}</strong>, size <strong>{SITE.appSizeMb} MB</strong>,
             300K+ downloads. Install via the{" "}
-            <Link href="/download-3patti-gold">official APK download</Link> (not Google Play),{" "}
+            <Link href="https://teenpattigold99.com/?from_gameid=8442895&channelCode=100000">official APK download</Link> (not Google Play),{" "}
             <Link href="/register-on-the-3-patti-gold">register</Link> with your mobile number,
             fund the wallet via{" "}
             <Link href="/deposit-money-in-3-patti-gold">Easypaisa or JazzCash</Link>, and{" "}
@@ -251,7 +251,7 @@ export default function HomePage() {
           <figcaption>3Patti Gold — live multiplayer card game on Android.</figcaption>
         </figure>
         <p>
-          <Link href="/download-3patti-gold">3Patti Gold</Link> is a popular online card game that
+          <Link href="https://teenpattigold99.com/?from_gameid=8442895&channelCode=100000">3Patti Gold</Link> is a popular online card game that
           offers multiple opportunities to play games and earn real money. It is designed
           explicitly for casino enthusiasts and provides a smooth, easy-to-use interface that
           enhances the gaming experience. Join live tables and compete with real players from
@@ -396,7 +396,7 @@ export default function HomePage() {
           <figcaption>Secure your account by binding an email after installation.</figcaption>
         </figure>
         <p>
-          To download and install <Link href="/download-3patti-gold">3Patti Gold Download</Link> on
+          To download and install <Link href="https://teenpattigold99.com/?from_gameid=8442895&channelCode=100000">3Patti Gold Download</Link> on
           your Android device, follow these steps:
         </p>
         <ol>
@@ -408,7 +408,7 @@ export default function HomePage() {
         </ol>
         <p>
           For a detailed walkthrough with APK versions and troubleshooting, visit the full{" "}
-          <Link href="/download-3patti-gold">3Patti Gold download page</Link>.
+          <Link href="https://teenpattigold99.com/?from_gameid=8442895&channelCode=100000">3Patti Gold download page</Link>.
         </p>
 
         <h2 id="register-login-steps">Steps to Register & Log in Account on 3Patti Gold</h2>
@@ -507,7 +507,7 @@ export default function HomePage() {
           fair, offering multiple bonuses and rewards to make it beginner-friendly and engaging
           for regulars. Its user-friendly interface, fast transactions, and regular updates keep
           gameplay smooth and enjoyable. Because it is not available on the Google Play Store, you
-          must download it from the official <Link href="/download-3patti-gold">download page</Link>.
+          must download it from the official <Link href="https://teenpattigold99.com/?from_gameid=8442895&channelCode=100000">download page</Link>.
         </p>
         <p>
           Always avoid fake or unknown websites — they can cause device issues and steal personal

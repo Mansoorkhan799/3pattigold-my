@@ -53,7 +53,7 @@ export default function Page() {
         <p>
           New to the app? Start by creating an account on the{" "}
           <Link href="/register-on-the-3-patti-gold">register on 3 Patti Gold</Link> page, or
-          grab the APK first via the <Link href="/download-3patti-gold">download guide</Link>.
+          grab the APK first via the <Link href="https://teenpattigold99.com/?from_gameid=8442895&channelCode=100000">download guide</Link>.
         </p>
         <h2 id="login-steps">Login Steps</h2>
         <ol>

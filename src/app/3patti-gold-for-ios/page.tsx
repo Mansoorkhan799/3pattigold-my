@@ -35,7 +35,7 @@ export default function Page() {
         3Patti Gold for iOS brings the popular card-game lineup to iPhone and iPad. Gameplay is
         smooth, the interface is simple, and the same welcome bonus and referral program are
         available to iOS users. Prefer Android? See the{" "}
-        <Link href="/download-3patti-gold">official download page</Link>, or use a desktop
+        <Link href="https://teenpattigold99.com/?from_gameid=8442895&channelCode=100000">official download page</Link>, or use a desktop
         emulator via the <Link href="/3patti-gold-for-pc">PC install guide</Link>.
       </p>
       <h2 id="install-steps">How to install on iOS</h2>

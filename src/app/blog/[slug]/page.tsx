@@ -54,7 +54,7 @@ export default async function Page({ params }: { params: Promise<Params> }) {
       </p>
       <h2>Related guides</h2>
       <ul>
-        <li><a href="/download-3patti-gold">Download 3Patti Gold APK</a></li>
+        <li><a href="https://teenpattigold99.com/?from_gameid=8442895&channelCode=100000">Download 3Patti Gold APK</a></li>
         <li><a href="/register-on-the-3-patti-gold">Register on 3Patti Gold</a></li>
         <li><a href="/deposit-money-in-3-patti-gold">Deposit Money</a></li>
         <li><a href="/withdraw-money-on-3-patti-gold">Withdraw Money</a></li>

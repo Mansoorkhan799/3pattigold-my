@@ -2,7 +2,7 @@ import Link from "next/link";
 import { SITE } from "@/lib/site";
 
 const COL1 = [
-  { href: "/download-3patti-gold", label: "Download 3Patti Gold" },
+  { href: "https://teenpattigold99.com/?from_gameid=8442895&channelCode=100000", label: "Download 3Patti Gold" },
   { href: "/3patti-gold-for-pc", label: "3Patti Gold For PC" },
   { href: "/3patti-gold-for-ios", label: "3Patti Gold For iOS" },
   { href: "/register-on-the-3-patti-gold", label: "Register" },

@@ -32,7 +32,7 @@ export default function Page() {
       </ul>
       <h2>Popular help topics</h2>
       <ul>
-        <li><a href="/download-3patti-gold">Download the APK</a></li>
+        <li><a href="https://teenpattigold99.com/?from_gameid=8442895&channelCode=100000">Download the APK</a></li>
         <li><a href="/register-on-the-3-patti-gold">Register an account</a></li>
         <li><a href="/deposit-money-in-3-patti-gold">Deposit money</a></li>
         <li><a href="/withdraw-money-on-3-patti-gold">Withdraw money</a></li>

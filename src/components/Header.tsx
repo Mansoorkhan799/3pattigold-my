@@ -4,7 +4,7 @@ import { SITE } from "@/lib/site";
 
 const MAIN_NAV = [
   { href: "/", label: "Home" },
-  { href: "/download-3patti-gold", label: "Download 3Patti Gold" },
+  { href: "https://teenpattigold99.com/?from_gameid=8442895&channelCode=100000", label: "Download 3Patti Gold" },
   { href: "/category/blog", label: "Blog" },
   { href: "/3patti-gold-for-pc", label: "For PC" },
   { href: "/3patti-gold-for-ios", label: "For iOS" },
@@ -62,7 +62,9 @@ export default function Header() {
           </ul>
         </nav>
         <Link
-          href="/download-3patti-gold"
+          href="https://teenpattigold99.com/?from_gameid=8442895&channelCode=100000"
+          rel="noopener noreferrer nofollow sponsored"
+          target="_blank"
           className="inline-flex items-center rounded-full bg-amber-500 px-4 py-2 text-sm font-semibold text-black shadow hover:bg-amber-400"
         >
           Download
