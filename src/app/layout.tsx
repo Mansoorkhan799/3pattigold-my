@@ -11,11 +11,11 @@ import { SITE, ABSOLUTE } from "@/lib/site";
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
   title: {
-    default: `${SITE.brand} Game Download Latest Version For Android 2026`,
+    default: `${SITE.brand} APK Pakistan Hands-on Review (v${SITE.appVersion})`,
     template: `%s | ${SITE.brand}`,
   },
   description:
-    "3Patti Gold is the most popular card game in Pakistan, where you can play online casino games to earn real money with fast withdrawals and 24/7 Support.",
+    "Download 3Patti Gold APK for Android in Pakistan. Play Teen Patti, Rummy, and casino tables, deposit via JazzCash or Easypaisa, and withdraw with 24/7 support. 18+ only.",
   applicationName: SITE.name,
   generator: "Next.js",
   keywords: [
@@ -37,17 +37,17 @@ export const metadata: Metadata = {
     type: "website",
     url: SITE.url,
     siteName: SITE.name,
-    title: `${SITE.brand} Game Download Latest Version For Android 2026`,
+    title: `${SITE.brand} APK Pakistan Hands-on Review (v${SITE.appVersion})`,
     description:
-      "3Patti Gold is the most popular card game in Pakistan, where you can play online casino games to earn real money with fast withdrawals and 24/7 Support.",
+      "Download 3Patti Gold APK for Android in Pakistan. Play Teen Patti, Rummy, and casino tables, deposit via JazzCash or Easypaisa, and withdraw with 24/7 support. 18+ only.",
     locale: SITE.locale,
     images: [{ url: ABSOLUTE(SITE.defaultOgImage), width: 1200, height: 630, alt: SITE.name }],
   },
   twitter: {
     card: "summary_large_image",
-    title: `${SITE.brand} Game Download Latest Version For Android 2026`,
+    title: `${SITE.brand} APK Pakistan Hands-on Review (v${SITE.appVersion})`,
     description:
-      "3Patti Gold is the most popular card game in Pakistan, where you can play online casino games to earn real money with fast withdrawals and 24/7 Support.",
+      "Download 3Patti Gold APK for Android in Pakistan. Play Teen Patti, Rummy, and casino tables, deposit via JazzCash or Easypaisa, and withdraw with 24/7 support. 18+ only.",
     images: [ABSOLUTE(SITE.defaultOgImage)],
     site: SITE.twitter,
   },

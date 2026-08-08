@@ -5,11 +5,11 @@ import PageLayout from "@/components/PageLayout";
 import Accordion from "@/components/Accordion";
 import { JsonLd } from "@/components/JsonLd";
 import { howTo, softwareApp } from "@/lib/jsonld";
-import { INSTALL_STEPS, APK_DETAILS } from "@/content/home";
+import { APK_DETAILS, HOME_META, INSTALL_STEPS, SYSTEM_REQUIREMENTS } from "@/content/home";
+import { SITE } from "@/lib/site";
 
-const TITLE = "Download 3Patti Gold APK Latest Version 2026 For Android";
-const DESC =
-  "Download the latest 3Patti Gold APK for Android in Pakistan. Safe install, fast updates, and earn real money with 24/7 support.";
+const TITLE = `Download 3Patti Gold APK v${SITE.appVersion} (${SITE.appSizeMb} MB) — Android 2026`;
+const DESC = `Get 3Patti Gold APK v${SITE.appVersion} for Android in Pakistan. ${SITE.appSizeMb} MB install, JazzCash & Easypaisa wallets, and 24/7 support. 18+ only.`;
 const PATH = "/download-3patti-gold";
 const PUBLISHED = "2025-12-27T22:48:26+00:00";
 
@@ -19,14 +19,20 @@ export const metadata: Metadata = buildMetadata({
   path: PATH,
   type: "article",
   publishedTime: PUBLISHED,
-  modifiedTime: new Date().toISOString(),
-  keywords: ["3 patti gold download", "3patti gold apk", "3 patti gold apk download", "3 patti gold latest version"],
+  modifiedTime: HOME_META.dateModified,
+  keywords: [
+    "3 patti gold download",
+    "3patti gold apk",
+    "3 patti gold apk download",
+    "3 patti gold latest version",
+    `3 patti gold ${SITE.appVersion}`,
+  ],
 });
 
 export default function Page() {
   const install = howTo({
-    name: "How to Download 3Patti Gold APK on Android",
-    description: "Download and install 3Patti Gold APK safely on your Android device.",
+    name: `How to Download 3Patti Gold APK v${SITE.appVersion} on Android`,
+    description: `Download and install 3Patti Gold APK v${SITE.appVersion} safely on your Android device.`,
     totalTime: "PT5M",
     steps: INSTALL_STEPS.map((s) => ({ name: s.title, text: s.text })),
   });
@@ -40,16 +46,33 @@ export default function Page() {
         intro={DESC}
         path={PATH}
         datePublished={PUBLISHED}
+        dateModified={HOME_META.dateModified}
         crumbs={[
           { name: "Home", path: "/" },
           { name: "Download 3Patti Gold", path: PATH },
         ]}
       >
+        <p>
+          Current Android build we list: <strong>v{SITE.appVersion}</strong> ·{" "}
+          <strong>{SITE.appSizeMb} MB</strong>. Tap the button below for the tracked APK — avoid
+          older 1.1.x files and unrelated white-label copies.
+        </p>
+        <p>
+          <Link
+            href={SITE.downloadOfferUrl}
+            rel="noopener noreferrer nofollow sponsored"
+            target="_blank"
+            className="inline-flex items-center rounded-full bg-amber-500 px-6 py-3 text-base font-semibold text-black no-underline shadow hover:bg-amber-400"
+          >
+            Download APK v{SITE.appVersion}
+          </Link>
+        </p>
+
         <h2 id="about-the-apk">About the 3Patti Gold APK</h2>
         <p>
-          The 3Patti Gold APK lets you play card games such as Teen Patti, Andar Bahar, Dragon vs
-          Tiger, and more — all from one app. Fast deposits, quick withdrawals, and attractive
-          bonuses make it one of the most popular options in Pakistan.
+          Version <strong>{SITE.appVersion}</strong> is the Teen Patti and casino client for
+          Pakistan: live tables, JazzCash / Easypaisa / bank transfer, and welcome chips after OTP.
+          It is not on Google Play — update by installing this APK over the previous build.
         </p>
 
         <h2 id="apk-details">3Patti Gold APK Details</h2>
@@ -74,24 +97,37 @@ export default function Page() {
         </ol>
 
         <h2 id="system-requirements">Android System Requirements</h2>
-        <ul>
-          <li>Android 5.0 (Lollipop) or higher</li>
-          <li>At least 200 MB free storage</li>
-          <li>Stable internet connection</li>
-          <li>1 GB RAM recommended</li>
-        </ul>
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">System</th>
+              <th scope="col">Minimum</th>
+              <th scope="col">Recommended</th>
+            </tr>
+          </thead>
+          <tbody>
+            {SYSTEM_REQUIREMENTS.map((row) => (
+              <tr key={row.label}>
+                <th scope="row">{row.label}</th>
+                <td>{row.minimum}</td>
+                <td>{row.recommended}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
 
         <h2 id="safe-install">Is 3Patti Gold APK Safe to Install?</h2>
         <p>
-          Always download the APK from the official source to avoid fake apps. Prefer a different
-          device? See our <Link href="/3patti-gold-for-pc">3Patti Gold For PC</Link> and{" "}
-          <Link href="/3patti-gold-for-ios">3Patti Gold For iOS</Link> install guides.
+          After install, open the app info screen and confirm the version is{" "}
+          <strong>v{SITE.appVersion}</strong>. Prefer a different device? See{" "}
+          <Link href="/3patti-gold-for-pc">3Patti Gold For PC</Link> and{" "}
+          <Link href="/3patti-gold-for-ios">3Patti Gold For iOS</Link>.
         </p>
         <p>
-          Once installed, follow the <Link href="/register-on-the-3-patti-gold">register guide</Link>,
-          then <Link href="/log-in-to-the-3-patti-gold">log in</Link> and top up your wallet via
-          the <Link href="/deposit-money-in-3-patti-gold">deposit guide</Link>. When you win, cash
-          out with our <Link href="/withdraw-money-on-3-patti-gold">withdraw guide</Link>.
+          Then follow the <Link href="/register-on-the-3-patti-gold">register guide</Link>,{" "}
+          <Link href="/log-in-to-the-3-patti-gold">log in</Link>, and the{" "}
+          <Link href="/deposit-money-in-3-patti-gold">deposit</Link> /{" "}
+          <Link href="/withdraw-money-on-3-patti-gold">withdraw</Link> guides.
         </p>
 
         <h2 id="faq">Download FAQs</h2>
@@ -101,17 +137,18 @@ export default function Page() {
               q: "Is 3Patti Gold on Google Play Store?",
               a: (
                 <p>
-                  No. Because it is an APK with real-money features, it is not available on the
-                  Play Store in Pakistan. Download from the official website only.
+                  No. Real-money APKs in Pakistan are usually sideloaded. Download only via our
+                  tracked button, then confirm <strong>v{SITE.appVersion}</strong> after install.
                 </p>
               ),
             },
             {
-              q: "How do I update 3Patti Gold?",
+              q: `How do I update to v${SITE.appVersion}?`,
               a: (
                 <p>
-                  Visit the <Link href="https://teenpattigold99.com/?from_gameid=8442895&channelCode=100000">download page</Link> and re-download the latest APK.
-                  Open the file to update over the existing install — your account is preserved.
+                  Open the <Link href={SITE.downloadOfferUrl}>download destination</Link>, get the
+                  new APK, and install over the existing app. Your login stays; you do not need to
+                  unregister.
                 </p>
               ),
             },

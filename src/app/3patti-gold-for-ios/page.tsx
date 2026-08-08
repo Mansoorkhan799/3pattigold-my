@@ -2,10 +2,11 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { buildMetadata } from "@/lib/seo";
 import PageLayout from "@/components/PageLayout";
+import { SITE } from "@/lib/site";
+import { HOME_META } from "@/content/home";
 
-const TITLE = "Download 3Patti Gold For iOS Latest Version For Free 2026";
-const DESC =
-  "Install 3Patti Gold on iPhone or iPad. Fluent performance, quick gameplay, and full access to bonuses, deposits, and withdrawals on iOS.";
+const TITLE = `3Patti Gold For iOS 2026 — Same Account as Android v${SITE.appVersion}`;
+const DESC = `Install 3Patti Gold on iPhone or iPad. Android users should install APK v${SITE.appVersion} (${SITE.appSizeMb} MB). Same wallet, bonuses, JazzCash and Easypaisa.`;
 const PATH = "/3patti-gold-for-ios";
 const PUBLISHED = "2025-12-27T22:48:26+00:00";
 
@@ -15,6 +16,7 @@ export const metadata: Metadata = buildMetadata({
   path: PATH,
   type: "article",
   publishedTime: PUBLISHED,
+  modifiedTime: HOME_META.dateModified,
   keywords: ["3 patti gold for ios", "3patti gold iphone", "3 patti gold ipad"],
 });
 
@@ -25,6 +27,7 @@ export default function Page() {
       intro={DESC}
       path={PATH}
       datePublished={PUBLISHED}
+      dateModified={HOME_META.dateModified}
       crumbs={[
         { name: "Home", path: "/" },
         { name: "3Patti Gold For iOS", path: PATH },
@@ -34,8 +37,8 @@ export default function Page() {
       <p>
         3Patti Gold for iOS brings the popular card-game lineup to iPhone and iPad. Gameplay is
         smooth, the interface is simple, and the same welcome bonus and referral program are
-        available to iOS users. Prefer Android? See the{" "}
-        <Link href="https://teenpattigold99.com/?from_gameid=8442895&channelCode=100000">official download page</Link>, or use a desktop
+        available to iOS users. Prefer Android? Install APK <strong>v{SITE.appVersion}</strong> from
+        the <Link href={SITE.downloadPagePath}>official download page</Link>, or use a desktop
         emulator via the <Link href="/3patti-gold-for-pc">PC install guide</Link>.
       </p>
       <h2 id="install-steps">How to install on iOS</h2>

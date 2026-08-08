@@ -191,13 +191,31 @@ export function softwareApp() {
     name: `${SITE.brand} APK`,
     operatingSystem: "ANDROID",
     applicationCategory: "GameApplication",
-    offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+    offers: { "@type": "Offer", price: "0", priceCurrency: "PKR" },
     softwareVersion: SITE.appVersion,
     fileSize: `${SITE.appSizeMb} MB`,
     author: { "@id": `${SITE.url}/#organization` },
     publisher: { "@id": `${SITE.url}/#organization` },
-    downloadUrl: `${SITE.url}/download-3patti-gold`,
+    downloadUrl: SITE.downloadOfferUrl,
+    installUrl: SITE.downloadOfferUrl,
+    countriesSupported: SITE.supportedCountry,
+    inLanguage: [...SITE.supportedLanguages],
     contentRating: "18+",
+  };
+}
+
+export function itemList(params: { name: string; description: string; items: string[] }) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: params.name,
+    description: params.description,
+    numberOfItems: params.items.length,
+    itemListElement: params.items.map((name, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name,
+    })),
   };
 }
 

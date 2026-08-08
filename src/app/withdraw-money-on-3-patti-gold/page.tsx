@@ -5,6 +5,8 @@ import PageLayout from "@/components/PageLayout";
 import Accordion from "@/components/Accordion";
 import { JsonLd } from "@/components/JsonLd";
 import { howTo } from "@/lib/jsonld";
+import { SITE } from "@/lib/site";
+import { HOME_META } from "@/content/home";
 
 const TITLE = "How to Withdraw Money on 3 Patti Gold — Fast Payouts Guide";
 const DESC =
@@ -18,6 +20,7 @@ export const metadata: Metadata = buildMetadata({
   path: PATH,
   type: "article",
   publishedTime: PUBLISHED,
+  modifiedTime: HOME_META.dateModified,
   keywords: ["3 patti gold withdraw", "3 patti gold payout", "3 patti gold easypaisa withdraw"],
 });
 
@@ -45,11 +48,17 @@ export default function Page() {
         intro={DESC}
         path={PATH}
         datePublished={PUBLISHED}
+        dateModified={HOME_META.dateModified}
         crumbs={[
           { name: "Home", path: "/" },
           { name: "Withdraw", path: PATH },
         ]}
       >
+        <p>
+          These steps apply to <strong>v{SITE.appVersion}</strong>. Older builds may miss JazzCash
+          or Easypaisa payout options — update via the{" "}
+          <Link href={SITE.downloadPagePath}>download page</Link> before you open a ticket.
+        </p>
         <h2 id="withdraw-steps">Withdrawal Steps</h2>
         <ol>
           {STEPS.map((s) => (

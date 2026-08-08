@@ -3,23 +3,34 @@ import Link from "next/link";
 import Image from "next/image";
 import Accordion from "@/components/Accordion";
 import TableOfContents from "@/components/TableOfContents";
+import SessionBudgetTool from "@/components/SessionBudgetTool";
 import { JsonLd } from "@/components/JsonLd";
 import { buildMetadata } from "@/lib/seo";
-import { articleGraph, faqPage, howTo, softwareApp } from "@/lib/jsonld";
+import { articleGraph, faqPage, howTo, itemList, softwareApp } from "@/lib/jsonld";
 import { SITE } from "@/lib/site";
+import { DEFAULT_AUTHOR } from "@/content/authors";
 import {
   HOME_META,
   APK_DETAILS,
+  SYSTEM_REQUIREMENTS,
+  WHATS_NEW,
   NEW_USER_OFFERS,
   EXCLUSIVE_BONUSES,
   KEY_FEATURES,
   INSTALL_STEPS,
+  REGISTER_STEPS,
+  LOGIN_STEPS,
+  PLAY_STEPS,
   STRATEGIES,
   PAYMENT_METHODS,
   POPULAR_GAMES,
   SECURITY_FAIRPLAY,
   PROS,
   CONS,
+  HANDS_ON_CHECKS,
+  CLONE_VS_US,
+  TEEN_PATTI_RANKS,
+  FAKE_APK_FLAGS,
   FAQS,
 } from "@/content/home";
 
@@ -44,12 +55,19 @@ export const metadata: Metadata = buildMetadata({
 const TOC = [
   { id: "3patti-gold-game-download", label: "3Patti Gold Game Download Latest Version" },
   { id: "3patti-gold-apk-details", label: "3Patti Gold APK Details" },
+  { id: "why-this-review", label: "Why this page is not a clone template" },
+  { id: "hands-on-log", label: "Hands-on check log (8 Aug 2026)" },
+  { id: "teen-patti-ranks", label: "Teen Patti hand ranks (EN + Urdu)" },
+  { id: "session-budget", label: "PKR session budget tool" },
+  { id: "fake-apk-checklist", label: "Fake APK checklist" },
+  { id: "whats-new-2026", label: "What’s New in the August 2026 Review" },
   { id: "what-is-3patti-gold-apk", label: "What is the 3Patti Gold APK?" },
   { id: "reasons-to-choose", label: "Reasons to Choose the 3Patti Gold App in Pakistan" },
   { id: "special-offers-new-users", label: "Special Offers for New Users" },
   { id: "exclusive-bonuses", label: "Exclusive Bonuses & Promotions" },
   { id: "key-features", label: "Key Features of 3Patti Gold APK" },
   { id: "download-install", label: "Download & Install 3Patti Gold APK for Android" },
+  { id: "system-requirements", label: "Android System Requirements" },
   { id: "register-login-steps", label: "Steps to Register & Log in Account" },
   { id: "how-to-play-earn", label: "How to Play & Earn Money on 3Patti Gold" },
   { id: "supported-payment-methods", label: "Supported Payment Methods" },
@@ -72,8 +90,16 @@ export default function HomePage() {
     datePublished: HOME_META.datePublished,
     dateModified: HOME_META.dateModified,
     image: "/3-patti-gold-game.webp",
+    authorSlug: DEFAULT_AUTHOR.slug,
+    authorName: DEFAULT_AUTHOR.name,
+    authorBio: DEFAULT_AUTHOR.bio,
   });
   const faq = faqPage(FAQS);
+  const rankList = itemList({
+    name: "Teen Patti hand rankings used in 3Patti Gold",
+    description: "Highest to lowest classic three-card ranks with Urdu names.",
+    items: TEEN_PATTI_RANKS.map((r) => r.rank),
+  });
   const install = howTo({
     name: "How to Download & Install 3Patti Gold APK on Android",
     description:
@@ -89,17 +115,21 @@ export default function HomePage() {
       <JsonLd data={faq} />
       <JsonLd data={install} />
       <JsonLd data={app} />
+      <JsonLd data={rankList} />
 
       <section className="mx-auto max-w-6xl px-4 pt-10">
         <div className="grid items-center gap-10 md:grid-cols-[1.1fr_1fr]">
           <div>
             <h1 className="text-3xl font-extrabold leading-tight md:text-5xl">
-              {HOME_META.title}
+              Teen Patti Gold
             </h1>
+            <h2 className="mt-3 text-xl font-bold leading-snug text-neutral-800 md:text-2xl">
+              Pakistan&apos;s Most Premier Online Gaming Platform
+            </h2>
             <p className="mt-4 text-lg text-neutral-700">{HOME_META.description}</p>
             <div className="mt-6 flex flex-wrap items-center gap-3">
               <Link
-                href="https://teenpattigold99.com/?from_gameid=8442895&channelCode=100000"
+                href={SITE.downloadPagePath}
                 className="inline-flex items-center rounded-full bg-amber-500 px-6 py-3 text-base font-semibold text-black shadow hover:bg-amber-400"
               >
                 Download 3Patti Gold
@@ -161,16 +191,17 @@ export default function HomePage() {
             Quick Answer
           </h2>
           <p className="mt-2 text-[15px] text-neutral-800">
-            <strong>3Patti Gold</strong> is a free real-money card-game APK for Android 5.0+ in
-            Pakistan. Version <strong>v{SITE.appVersion}</strong>, size <strong>{SITE.appSizeMb} MB</strong>,
-            300K+ downloads. Install via the{" "}
-            <Link href="https://teenpattigold99.com/?from_gameid=8442895&channelCode=100000">official APK download</Link> (not Google Play),{" "}
-            <Link href="/register-on-the-3-patti-gold">register</Link> with your mobile number,
-            fund the wallet via{" "}
-            <Link href="/deposit-money-in-3-patti-gold">Easypaisa or JazzCash</Link>, and{" "}
-            <Link href="/withdraw-money-on-3-patti-gold">withdraw winnings</Link> to the same
-            methods. Also runs on <Link href="/3patti-gold-for-pc">PC via emulator</Link> and{" "}
-            <Link href="/3patti-gold-for-ios">iOS</Link>. 18+ only — play responsibly.
+            <strong>3Patti Gold</strong> is a real-money Teen Patti and casino APK for Android 5.0+
+            in Pakistan. Current build we list: <strong>v{SITE.appVersion}</strong> ·{" "}
+            <strong>{SITE.appSizeMb} MB</strong> · 300K+ installs · English/Urdu. Download via the{" "}
+            <Link href={SITE.downloadPagePath}>download page</Link>{" "}
+            (not Google Play), <Link href="/register-on-the-3-patti-gold">register</Link> with a
+            local mobile number, claim welcome chips, then deposit with{" "}
+            <Link href="/deposit-money-in-3-patti-gold">JazzCash, Easypaisa, or bank transfer</Link>.
+            Cash out on the <Link href="/withdraw-money-on-3-patti-gold">withdraw page</Link>. Also
+            runs on <Link href="/3patti-gold-for-pc">PC via emulator</Link> and{" "}
+            <Link href="/3patti-gold-for-ios">iOS</Link>. 18+ only — never wager money you cannot
+            afford to lose.
           </p>
         </aside>
 
@@ -204,11 +235,14 @@ export default function HomePage() {
               </tr>
               <tr>
                 <th scope="row">Supported payments</th>
-                <td>Easypaisa, JazzCash, bank transfer</td>
+                <td>JazzCash, Easypaisa, bank transfer</td>
               </tr>
               <tr>
                 <th scope="row">Games included</th>
-                <td>Teen Patti, Rummy, Andar Bahar, Dragon vs Tiger, Roulette, Poker, slots</td>
+                <td>
+                  Teen Patti (Classic, Joker, Muflis, AK47+), Rummy, Andar Bahar, Dragon vs Tiger,
+                  poker, live casino, Ludo, slots
+                </td>
               </tr>
               <tr>
                 <th scope="row">Age restriction</th>
@@ -234,6 +268,113 @@ export default function HomePage() {
           </table>
         </section>
 
+        <h2 id="why-this-review">Why this page is not a clone template</h2>
+        <p>
+          Most “3Patti Gold download” URLs recycle the same headings, fake Play Store developer
+          names, and inflated install counts. Google already has thousands of those pages. This
+          review is written for <strong>3pattigolds.com.pk</strong> only: one tracked APK (
+          <strong>v{SITE.appVersion}</strong>), Pakistan wallets, and original tables/tools you
+          will not find copy-pasted from a competitor’s WordPress theme.
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Topic</th>
+              <th scope="col">Typical clone blogs</th>
+              <th scope="col">This review</th>
+            </tr>
+          </thead>
+          <tbody>
+            {CLONE_VS_US.map((row) => (
+              <tr key={row.topic}>
+                <th scope="row">{row.topic}</th>
+                <td>{row.cloneBlogs}</td>
+                <td>{row.thisSite}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+
+        <h2 id="hands-on-log">Hands-on check log — 8 August 2026</h2>
+        <p>
+          We reinstall the APK, open Wallet, and confirm OTP on a Pakistani SIM before we change
+          the version string on this page. If a check fails next month, we update the row instead
+          of leaving stale “latest 2026” marketing copy.
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">What we checked</th>
+              <th scope="col">Result</th>
+            </tr>
+          </thead>
+          <tbody>
+            {HANDS_ON_CHECKS.map((row) => (
+              <tr key={row.check}>
+                <th scope="row">{row.check}</th>
+                <td>{row.result}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+
+        <h2 id="teen-patti-ranks">Teen Patti hand ranks (English + Urdu)</h2>
+        <p>
+          Clone articles list “play smart” and stop. Here is the actual rank order used on classic
+          three-card tables inside 3Patti Gold — useful whether you speak English or Urdu at the
+          table.
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Rank (high → low)</th>
+              <th scope="col">اردو</th>
+              <th scope="col">Example</th>
+              <th scope="col">Table tip</th>
+            </tr>
+          </thead>
+          <tbody>
+            {TEEN_PATTI_RANKS.map((row) => (
+              <tr key={row.rank}>
+                <th scope="row">{row.rank}</th>
+                <td lang="ur">{row.urdu}</td>
+                <td>{row.example}</td>
+                <td>{row.tip}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+
+        <h2 id="session-budget">PKR session budget tool</h2>
+        <p>
+          Competitors push “earn unlimited money.” We would rather you last the month. Enter what
+          you can actually spend on entertainment this week — the tool suggests sitting size and
+          stop-loss in rupees. Nothing is stored on our servers.
+        </p>
+        <SessionBudgetTool />
+
+        <h2 id="fake-apk-checklist">Fake APK checklist</h2>
+        <p>
+          If any row matches the file or page in front of you, delete it and come back to{" "}
+          <Link href={SITE.downloadPagePath}>our download page</Link>.
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Red flag</th>
+              <th scope="col">Why it matters</th>
+            </tr>
+          </thead>
+          <tbody>
+            {FAKE_APK_FLAGS.map((row) => (
+              <tr key={row.flag}>
+                <th scope="row">{row.flag}</th>
+                <td>{row.why}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+
         <TableOfContents items={TOC} />
 
         <h2 id="3patti-gold-game-download">
@@ -251,18 +392,18 @@ export default function HomePage() {
           <figcaption>3Patti Gold — live multiplayer card game on Android.</figcaption>
         </figure>
         <p>
-          <Link href="https://teenpattigold99.com/?from_gameid=8442895&channelCode=100000">3Patti Gold</Link> is a popular online card game that
-          offers multiple opportunities to play games and earn real money. It is designed
-          explicitly for casino enthusiasts and provides a smooth, easy-to-use interface that
-          enhances the gaming experience. Join live tables and compete with real players from
-          various regions — a realistic game-playing experience from home.
+          <Link href={SITE.downloadPagePath}>3Patti Gold</Link>{" "}
+          is a Pakistan-focused real-money lobby: classic Teen Patti variations, Rummy, Andar Bahar,
+          Dragon vs Tiger, poker, live tables, and short arcade games. The interface is built for
+          one-hand mobile play — pick a stake, sit, and chat or play silently. Tables are live
+          against other people, not a single-player dealer bot.
         </p>
         <p>
-          The app includes daily challenges, events, and social features that make your gameplay
-          more fun and competitive. Whether you play for fun or for competition, this app gives
-          you a realistic, best-in-class gaming experience, just like a real casino. You can also
-          run it on a bigger screen — see our <Link href="/3patti-gold-for-pc">3Patti Gold For PC</Link>{" "}
-          or <Link href="/3patti-gold-for-ios">3Patti Gold For iOS</Link> guides.
+          Daily login chips, recharge rebate, referral rewards, and weekend events keep the lobby
+          moving. Play for entertainment or for cash, but treat every deposit as money you can
+          lose. Prefer a bigger screen? Use the{" "}
+          <Link href="/3patti-gold-for-pc">3Patti Gold For PC</Link> emulator guide or the{" "}
+          <Link href="/3patti-gold-for-ios">iOS install guide</Link>.
         </p>
 
         <h2 id="3patti-gold-apk-details">3Patti Gold APK Details</h2>
@@ -277,20 +418,41 @@ export default function HomePage() {
           </tbody>
         </table>
 
+        <h2 id="whats-new-2026">What’s new in this August 2026 review</h2>
+        <p>
+          We re-checked the Android listing, Pakistan wallet paths, and install flow on{" "}
+          {new Date(HOME_META.dateModified).toLocaleDateString("en-US", {
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+          })}
+          . Version and file size below still match the APK we publish (
+          <strong>v{SITE.appVersion}</strong>, <strong>{SITE.appSizeMb} MB</strong>). Clone sites
+          sometimes advertise a different build number — ignore those unless they come from our
+          download button.
+        </p>
+        {WHATS_NEW.map((item) => (
+          <div key={item.id}>
+            <h3 id={item.id}>{item.title}</h3>
+            <p>{item.text}</p>
+          </div>
+        ))}
+
         <h2 id="what-is-3patti-gold-apk">What is the 3Patti Gold APK?</h2>
         <p>
-          The <Link href="/">3Patti Gold APK</Link> is a popular betting app that lets you play
-          various games, including Ludo, 3 Patti, Dragon vs Tiger, roulette, and more, to earn
-          real cash. You can play a wide variety of games in one app for a more engaging
-          experience. The most notable feature is that it keeps your{" "}
-          <Link href="/deposit-money-in-3-patti-gold">deposits</Link> and{" "}
-          <Link href="/withdraw-money-on-3-patti-gold">withdrawals</Link> safe and secure, so you
-          can transact without worry.
+          The <Link href="/">3Patti Gold APK</Link> is a sideloaded Android client for live card
+          and casino tables aimed at players in Pakistan. You get Teen Patti modes (Classic, Joker,
+          Muflis, AK47 and more), Rummy, Andar Bahar, Dragon vs Tiger, roulette, poker, Ludo, and
+          slots in one login.{" "}
+          <Link href="/deposit-money-in-3-patti-gold">Deposits</Link> and{" "}
+          <Link href="/withdraw-money-on-3-patti-gold">withdrawals</Link> go through JazzCash,
+          Easypaisa, or bank transfer — not international cards.
         </p>
         <p>
-          The latest version offers smooth gameplay, attractive graphics, and easy navigation. The
-          combination of entertainment, security, and convenience makes the 3 Patti Gold APK a
-          popular choice among online gamers.
+          The app is not on Google Play. That is typical for real-money APKs here, but it also
+          means fake “mod” files circulate. Use only the download control on this page, then
+          register with a number you control. Graphics and table load times are tuned for mid-range
+          Android devices on 4G.
         </p>
 
         <h2 id="reasons-to-choose">Reasons to Choose the 3Patti Gold App in Pakistan</h2>
@@ -396,8 +558,11 @@ export default function HomePage() {
           <figcaption>Secure your account by binding an email after installation.</figcaption>
         </figure>
         <p>
-          To download and install <Link href="https://teenpattigold99.com/?from_gameid=8442895&channelCode=100000">3Patti Gold Download</Link> on
-          your Android device, follow these steps:
+          To download and install{" "}
+          <Link href={SITE.downloadPagePath}>
+            3Patti Gold
+          </Link>{" "}
+          on Android, follow these steps:
         </p>
         <ol>
           {INSTALL_STEPS.map((s) => (
@@ -407,28 +572,68 @@ export default function HomePage() {
           ))}
         </ol>
         <p>
-          For a detailed walkthrough with APK versions and troubleshooting, visit the full{" "}
-          <Link href="https://teenpattigold99.com/?from_gameid=8442895&channelCode=100000">3Patti Gold download page</Link>.
+          Need a dedicated page with the same APK details? Open the{" "}
+          <Link href={SITE.downloadPagePath}>
+            tracked download destination
+          </Link>{" "}
+          or keep reading for system requirements.
         </p>
+
+        <h2 id="system-requirements">Android System Requirements</h2>
+        <p>
+          The APK is light (~{SITE.appSizeMb} MB), but live tables still need RAM and a stable
+          connection. Match at least the minimum column before you deposit.
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">System</th>
+              <th scope="col">Minimum</th>
+              <th scope="col">Recommended</th>
+            </tr>
+          </thead>
+          <tbody>
+            {SYSTEM_REQUIREMENTS.map((row) => (
+              <tr key={row.label}>
+                <th scope="row">{row.label}</th>
+                <td>{row.minimum}</td>
+                <td>{row.recommended}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
 
         <h2 id="register-login-steps">Steps to Register & Log in Account on 3Patti Gold</h2>
         <p>
-          Once installed, create your account in minutes — see the full{" "}
-          <Link href="/register-on-the-3-patti-gold">register on 3 Patti Gold</Link> guide. Open
-          the app, tap <em>Register</em>, enter your mobile number, complete the captcha, set a
-          strong password, and submit. Already have an account? Use the{" "}
-          <Link href="/log-in-to-the-3-patti-gold">log in to 3 Patti Gold</Link> screen to sign in
-          with your mobile number and password.
+          Full screenshots live on the{" "}
+          <Link href="/register-on-the-3-patti-gold">register guide</Link> and{" "}
+          <Link href="/log-in-to-the-3-patti-gold">login guide</Link>. Short version:
         </p>
+        <h3 id="register-account">01: Register</h3>
+        <ol>
+          {REGISTER_STEPS.map((s) => (
+            <li key={s.id} id={s.id}>
+              <strong>{s.title}:</strong> {s.text}
+            </li>
+          ))}
+        </ol>
+        <h3 id="login-account">02: Login</h3>
+        <ol>
+          {LOGIN_STEPS.map((s) => (
+            <li key={s.id} id={s.id}>
+              <strong>{s.title}:</strong> {s.text}
+            </li>
+          ))}
+        </ol>
 
         <h2 id="how-to-play-earn">How to Play & Earn Money on 3Patti Gold?</h2>
-        <p>
-          After you <Link href="/log-in-to-the-3-patti-gold">log in</Link>, open the lobby and
-          start with free chips from your welcome and daily login bonuses. Choose a low-bet table
-          to learn the pace, play smart hands, and withdraw winnings using{" "}
-          <Link href="/withdraw-money-on-3-patti-gold">Easypaisa or JazzCash</Link> once your
-          balance grows.
-        </p>
+        <ol>
+          {PLAY_STEPS.map((s) => (
+            <li key={s.id} id={s.id}>
+              <strong>{s.title}:</strong> {s.text}
+            </li>
+          ))}
+        </ol>
 
         <h2 id="supported-payment-methods">Supported Payment Methods of the 3Patti Gold App</h2>
         {PAYMENT_METHODS.map((m) => (
@@ -440,16 +645,18 @@ export default function HomePage() {
 
         <h2 id="deposit-method">01: Money Deposit Method</h2>
         <p>
-          Tap the <em>Deposit</em> section in the app, choose your payment method, enter the
-          amount, confirm, and your coins will land in your wallet within seconds. For full
-          limits, step-by-step flows, and troubleshooting, see our{" "}
+          Open <em>Wallet → Deposit</em>, pick JazzCash, Easypaisa, or bank transfer, type the
+          exact amount shown in the app, and finish the request in your wallet app. Coins usually
+          appear after the payment is confirmed — not before. Limits, failed payments, and
+          screenshots are on the{" "}
           <Link href="/deposit-money-in-3-patti-gold">deposit money in 3 Patti Gold</Link> guide.
         </p>
 
         <h2 id="withdraw-method">02: Rewards Withdrawal Method</h2>
         <p>
-          Open the <em>Withdraw</em> section, pick your method (Easypaisa or JazzCash), enter the
-          amount, and submit. Full details live on the dedicated{" "}
+          Open <em>Wallet → Withdraw</em>, enter an amount at or above the in-app minimum, choose
+          JazzCash or Easypaisa, and confirm. Use the same wallet name/CNIC as your profile.
+          Pending payouts and KYC notes are covered on the{" "}
           <Link href="/withdraw-money-on-3-patti-gold">withdraw money on 3 Patti Gold</Link> page.
         </p>
 
@@ -502,12 +709,14 @@ export default function HomePage() {
 
         <h2 id="final-thoughts">Final Thoughts</h2>
         <p>
-          <Link href="/">3 Patti Gold</Link> is one of the best and most popular real-money gaming
-          apps, offering a wide variety of games to earn real cash. The platform is secure and
-          fair, offering multiple bonuses and rewards to make it beginner-friendly and engaging
-          for regulars. Its user-friendly interface, fast transactions, and regular updates keep
-          gameplay smooth and enjoyable. Because it is not available on the Google Play Store, you
-          must download it from the official <Link href="https://teenpattigold99.com/?from_gameid=8442895&channelCode=100000">download page</Link>.
+          <Link href="/">3Patti Gold</Link> remains a practical real-money option in Pakistan if
+          you want Teen Patti plus casino tables, local wallets, and daily bonuses in one APK. It
+          is still not on Google Play, so the safe path is the{" "}
+          <Link href={SITE.downloadPagePath}>
+            tracked download
+          </Link>
+          , a number you control, and stakes you can afford to lose. Bonuses help beginners; they
+          do not remove house edge or table variance.
         </p>
         <p>
           Always avoid fake or unknown websites — they can cause device issues and steal personal

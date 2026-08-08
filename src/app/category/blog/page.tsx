@@ -7,7 +7,7 @@ import { POSTS } from "@/content/posts";
 import { SITE, ABSOLUTE } from "@/lib/site";
 
 const TITLE = "Blog — 3Patti Gold";
-const DESC = "Guides, reviews, and tips about 3Patti Gold. Latest news, strategies, and updates.";
+const DESC = `Guides for 3Patti Gold v${SITE.appVersion}: bonuses, OTP, private tables, and the latest APK changelog.`;
 const PATH = "/category/blog";
 
 export const metadata: Metadata = buildMetadata({ title: TITLE, description: DESC, path: PATH });

@@ -3,7 +3,7 @@ import { SITE, ABSOLUTE } from "@/lib/site";
 import { POSTS } from "@/content/posts";
 import { AUTHORS } from "@/content/authors";
 
-const STATIC_LAST_MODIFIED = new Date("2026-04-29T00:00:00.000Z");
+const STATIC_LAST_MODIFIED = new Date("2026-08-08T00:00:00.000Z");
 
 const STATIC_PATHS: { path: string; priority: number; changeFrequency: MetadataRoute.Sitemap[number]["changeFrequency"] }[] = [
   { path: "/", priority: 1.0, changeFrequency: "weekly" },

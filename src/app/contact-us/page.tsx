@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { buildMetadata } from "@/lib/seo";
 import PageLayout from "@/components/PageLayout";
+import { SITE } from "@/lib/site";
+import { HOME_META } from "@/content/home";
 
 const TITLE = "Contact Us | 3Patti Gold";
 const DESC =
@@ -20,6 +22,7 @@ export default function Page() {
       intro={DESC}
       path={PATH}
       datePublished="2025-12-27T22:48:26+00:00"
+      dateModified={HOME_META.dateModified}
       crumbs={[
         { name: "Home", path: "/" },
         { name: "Contact Us", path: PATH },
@@ -32,7 +35,9 @@ export default function Page() {
       </ul>
       <h2>Popular help topics</h2>
       <ul>
-        <li><a href="https://teenpattigold99.com/?from_gameid=8442895&channelCode=100000">Download the APK</a></li>
+        <li>
+          <a href={SITE.downloadPagePath}>Download the APK (v{SITE.appVersion})</a>
+        </li>
         <li><a href="/register-on-the-3-patti-gold">Register an account</a></li>
         <li><a href="/deposit-money-in-3-patti-gold">Deposit money</a></li>
         <li><a href="/withdraw-money-on-3-patti-gold">Withdraw money</a></li>

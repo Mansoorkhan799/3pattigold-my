@@ -5,6 +5,8 @@ import PageLayout from "@/components/PageLayout";
 import Accordion from "@/components/Accordion";
 import { JsonLd } from "@/components/JsonLd";
 import { howTo } from "@/lib/jsonld";
+import { SITE } from "@/lib/site";
+import { HOME_META } from "@/content/home";
 
 const TITLE = "How to Log in to the 3 Patti Gold — Secure Login Guide";
 const DESC =
@@ -18,6 +20,7 @@ export const metadata: Metadata = buildMetadata({
   path: PATH,
   type: "article",
   publishedTime: PUBLISHED,
+  modifiedTime: HOME_META.dateModified,
   keywords: ["3 patti gold login", "3 patti gold sign in", "3 patti gold account login"],
 });
 
@@ -45,6 +48,7 @@ export default function Page() {
         intro={DESC}
         path={PATH}
         datePublished={PUBLISHED}
+        dateModified={HOME_META.dateModified}
         crumbs={[
           { name: "Home", path: "/" },
           { name: "Login", path: PATH },
@@ -53,7 +57,8 @@ export default function Page() {
         <p>
           New to the app? Start by creating an account on the{" "}
           <Link href="/register-on-the-3-patti-gold">register on 3 Patti Gold</Link> page, or
-          grab the APK first via the <Link href="https://teenpattigold99.com/?from_gameid=8442895&channelCode=100000">download guide</Link>.
+          grab APK <strong>v{SITE.appVersion}</strong> via the{" "}
+          <Link href={SITE.downloadPagePath}>download guide</Link>.
         </p>
         <h2 id="login-steps">Login Steps</h2>
         <ol>
@@ -78,7 +83,15 @@ export default function Page() {
         <Accordion
           items={[
             { q: "Forgot password?", a: <p>Tap Forgot Password on the login screen and verify via OTP to reset.</p> },
-            { q: "Login not working?", a: <p>Ensure you have a stable connection, correct number, and the latest APK installed.</p> },
+            {
+              q: "Login not working?",
+              a: (
+                <p>
+                  Use a stable connection, the correct number, and confirm the app version is{" "}
+                  <strong>v{SITE.appVersion}</strong>. Older APKs often fail OTP or wallet screens.
+                </p>
+              ),
+            },
           ]}
         />
       </PageLayout>

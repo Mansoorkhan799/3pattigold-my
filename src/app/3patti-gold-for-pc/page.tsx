@@ -4,10 +4,11 @@ import { buildMetadata } from "@/lib/seo";
 import PageLayout from "@/components/PageLayout";
 import { JsonLd } from "@/components/JsonLd";
 import { howTo } from "@/lib/jsonld";
+import { SITE } from "@/lib/site";
+import { HOME_META } from "@/content/home";
 
-const TITLE = "Download 3Patti Gold For PC Latest Version For Free 2026";
-const DESC =
-  "Play 3Patti Gold on PC via an Android emulator such as BlueStacks or LDPlayer. Full step-by-step PC install guide with minimum requirements.";
+const TITLE = `3Patti Gold For PC — Install APK v${SITE.appVersion} via Emulator (2026)`;
+const DESC = `Run 3Patti Gold v${SITE.appVersion} (${SITE.appSizeMb} MB) on Windows or macOS with BlueStacks or LDPlayer. Same JazzCash / Easypaisa account as Android.`;
 const PATH = "/3patti-gold-for-pc";
 const PUBLISHED = "2025-12-27T22:48:26+00:00";
 
@@ -17,6 +18,7 @@ export const metadata: Metadata = buildMetadata({
   path: PATH,
   type: "article",
   publishedTime: PUBLISHED,
+  modifiedTime: HOME_META.dateModified,
   keywords: ["3 patti gold for pc", "3patti gold pc", "3 patti gold windows", "3 patti gold emulator"],
 });
 
@@ -43,15 +45,18 @@ export default function Page() {
         intro={DESC}
         path={PATH}
         datePublished={PUBLISHED}
+        dateModified={HOME_META.dateModified}
         crumbs={[
           { name: "Home", path: "/" },
           { name: "3Patti Gold For PC", path: PATH },
         ]}
       >
         <p>
-          If you prefer the Android build, grab it from the{" "}
-          <Link href="https://teenpattigold99.com/?from_gameid=8442895&channelCode=100000">3Patti Gold download page</Link>, or see the{" "}
-          <Link href="/3patti-gold-for-ios">iOS install guide</Link> for iPhone and iPad.
+          Use the same Android APK we list on mobile: <strong>v{SITE.appVersion}</strong> ·{" "}
+          <strong>{SITE.appSizeMb} MB</strong>. Download it from the{" "}
+          <Link href={SITE.downloadPagePath}>3Patti Gold download page</Link>, then drop the
+          file into your emulator. iPhone users should follow the{" "}
+          <Link href="/3patti-gold-for-ios">iOS install guide</Link> instead.
         </p>
         <h2 id="system-requirements">PC System Requirements</h2>
         <ul>

@@ -1,3 +1,5 @@
+import { SITE } from "@/lib/site";
+
 export type Post = {
   slug: string;
   title: string;
@@ -55,11 +57,10 @@ export const POSTS: Post[] = [
   },
   {
     slug: "latest-version-of-the-3patti-gold",
-    title: "Latest Version of the 3Patti Gold — What's New",
-    description:
-      "Changelog and highlights of the latest 3Patti Gold version. New tables, fixes, and performance improvements.",
+    title: `Latest Version of 3Patti Gold — v${SITE.appVersion} (${SITE.appSizeMb} MB)`,
+    description: `What's new in 3Patti Gold APK v${SITE.appVersion}: install size ${SITE.appSizeMb} MB, Pakistan wallet checks, and how to update over an older build.`,
     datePublished: "2025-12-27T22:48:26+00:00",
-    excerpt:
-      "The newest 3Patti Gold version adds fresh tables, smoother UI, and resolves common install and OTP issues.",
+    dateModified: "2026-08-08T07:00:00+00:00",
+    excerpt: `The current Android build we publish is v${SITE.appVersion} (${SITE.appSizeMb} MB). Update by installing over the previous APK — your account stays signed in.`,
   },
 ];

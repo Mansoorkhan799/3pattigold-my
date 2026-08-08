@@ -6,6 +6,8 @@ import PageLayout from "@/components/PageLayout";
 import Accordion from "@/components/Accordion";
 import { JsonLd } from "@/components/JsonLd";
 import { howTo } from "@/lib/jsonld";
+import { SITE } from "@/lib/site";
+import { HOME_META } from "@/content/home";
 
 const TITLE = "How to Register on the 3 Patti Gold — Step-by-Step Guide";
 const DESC =
@@ -19,6 +21,7 @@ export const metadata: Metadata = buildMetadata({
   path: PATH,
   type: "article",
   publishedTime: PUBLISHED,
+  modifiedTime: HOME_META.dateModified,
   keywords: ["3 patti gold register", "3 patti gold sign up", "3 patti gold account"],
 });
 
@@ -46,6 +49,7 @@ export default function Page() {
         intro={DESC}
         path={PATH}
         datePublished={PUBLISHED}
+        dateModified={HOME_META.dateModified}
         crumbs={[
           { name: "Home", path: "/" },
           { name: "Register", path: PATH },
@@ -67,8 +71,8 @@ export default function Page() {
         <p>
           Registering unlocks the welcome bonus, referral program, daily login rewards, and access
           to live tables where you can play real opponents for real rewards. If you haven't
-          installed the app yet, start with the{" "}
-          <Link href="https://teenpattigold99.com/?from_gameid=8442895&channelCode=100000">3Patti Gold download page</Link>.
+          installed the app yet, get APK <strong>v{SITE.appVersion}</strong> from the{" "}
+          <Link href={SITE.downloadPagePath}>3Patti Gold download page</Link>.
         </p>
         <h2 id="registration-steps">Registration Steps</h2>
         <ol>

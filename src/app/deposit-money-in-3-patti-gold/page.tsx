@@ -6,6 +6,8 @@ import PageLayout from "@/components/PageLayout";
 import Accordion from "@/components/Accordion";
 import { JsonLd } from "@/components/JsonLd";
 import { howTo } from "@/lib/jsonld";
+import { SITE } from "@/lib/site";
+import { HOME_META } from "@/content/home";
 
 const TITLE = "How to Deposit Money in 3 Patti Gold — Easypaisa & More";
 const DESC =
@@ -19,6 +21,7 @@ export const metadata: Metadata = buildMetadata({
   path: PATH,
   type: "article",
   publishedTime: PUBLISHED,
+  modifiedTime: HOME_META.dateModified,
   keywords: ["3 patti gold deposit", "3 patti gold easypaisa", "3 patti gold add money"],
 });
 
@@ -46,6 +49,7 @@ export default function Page() {
         intro={DESC}
         path={PATH}
         datePublished={PUBLISHED}
+        dateModified={HOME_META.dateModified}
         crumbs={[
           { name: "Home", path: "/" },
           { name: "Deposit", path: PATH },
@@ -63,6 +67,11 @@ export default function Page() {
           />
           <figcaption>Add funds to your 3Patti Gold wallet in seconds.</figcaption>
         </figure>
+        <p>
+          Wallet screens below match Android build <strong>v{SITE.appVersion}</strong>. If deposit
+          options look different, update the APK from the{" "}
+          <Link href={SITE.downloadPagePath}>download page</Link> first.
+        </p>
         <h2 id="deposit-steps">Deposit Steps</h2>
         <ol>
           {STEPS.map((s) => (
